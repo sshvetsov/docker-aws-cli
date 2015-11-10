@@ -8,13 +8,11 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get update \
   && DEBIAN_FRONTEND=noninteractive apt-get clean \
   && DEBIAN_FRONTEND=noninteractive rm -rf /var/lib/apt/lists/*
 
-RUN \
-  pip install awscli
+RUN pip install awscli
 
 RUN useradd aws
-
-RUN mkdir /data \
-  && chown aws:aws /data
+ 
+RUN mkdir -p /data && chown aws:aws /data
 
 VOLUME /data
 
